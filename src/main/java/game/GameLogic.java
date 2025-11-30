@@ -9,5 +9,7 @@ package main.java.game;
  * @author tobia
  */
 public class GameLogic {
-    
+    public boolean checkCollision(Basket b, FallingObject o) {
+        return b.getBounds().intersects(o.getBounds());
+    }
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package main.java.game;
+import javax.swing.*;
 
 /**
  *
@@ -10,6 +11,13 @@ package main.java.game;
  */
 public class Game {
        public static void main(String[] args) {
-           System.out.println("Test");
+        JFrame f = new JFrame("ProjektKoniecznyTobiasz");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setResizable(true);
+        f.add(new GamePanel());
+        f.pack();
+        f.repaint();
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
        }
 }
