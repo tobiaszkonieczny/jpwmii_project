@@ -9,5 +9,7 @@ package main.java.game;
  * @author tobia
  */
 public class Game {
-    
+       public static void main(String[] args) {
+           System.out.println("Test");
+       }
 }
