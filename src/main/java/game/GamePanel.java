@@ -80,6 +80,14 @@ public class GamePanel extends JComponent implements ActionListener, KeyListener
 
         repaint();
     }
+    
+    public void resetGame() {
+    points = 0;
+    lives = 3;
+    objects.clear();
+    gameOver = false;
+    repaint();
+}
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) basket.move(-20);
