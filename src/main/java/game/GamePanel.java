@@ -26,13 +26,14 @@ public class GamePanel extends JComponent implements ActionListener, KeyListener
 
     public GamePanel() {
         bg = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/main/resources/bg.jpg"));
-        basket = new Basket(getClass().getResource("/main/resources/basket.png"));
-        timer = new javax.swing.Timer(16, this);
+        basket = new Basket(getClass().getResource("/main/resources/basket.png")); //Import background and basket
+        timer = new javax.swing.Timer(16, this); //timer triggers each 16 ms = 60 fps
         timer.start();
         addKeyListener(this);
         setFocusable(true);
     }
-
+    
+    @Override
     protected void paintComponent(Graphics g) {
         g.drawImage(bg, 0, 0, getWidth(), getHeight(), null);
         basket.draw(g);
@@ -45,9 +46,11 @@ public class GamePanel extends JComponent implements ActionListener, KeyListener
 
         if (gameOver) g.drawString("GAME OVER", getWidth()/2 - 40, getHeight()/2);
     }
-
+    
+    @Override
     public Dimension getPreferredSize() { return new Dimension(600, 800); }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (gameOver) return;
 
@@ -88,12 +91,12 @@ public class GamePanel extends JComponent implements ActionListener, KeyListener
     gameOver = false;
     repaint();
 }
-
+    @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) basket.move(-20);
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) basket.move(20);
     }
-
+    @Override
     public void keyReleased(KeyEvent e) {}
     public void keyTyped(KeyEvent e) {}
 }

@@ -20,7 +20,7 @@ public class Sound {
                 System.out.println("Nie znaleziono pliku: " + path);
                 return;
             }
-            BufferedInputStream bis = new BufferedInputStream(is);
+            BufferedInputStream bis = new BufferedInputStream(is); //this is because the sounds didn't play in jar
             AudioInputStream audio = AudioSystem.getAudioInputStream(bis);
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
