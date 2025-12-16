@@ -5,6 +5,8 @@
 package main.java.game;
 import javax.sound.sampled.*;
 import java.io.InputStream;
+import java.io.BufferedInputStream;
+
 /**
  *
  * @author tobia
@@ -14,10 +16,17 @@ public class Sound {
     public static void play(String path) {
         try {
             InputStream is = Sound.class.getResourceAsStream(path);
-            AudioInputStream audio = AudioSystem.getAudioInputStream(is);
+            if (is == null) {
+                System.out.println("Nie znaleziono pliku: " + path);
+                return;
+            }
+            BufferedInputStream bis = new BufferedInputStream(is);
+            AudioInputStream audio = AudioSystem.getAudioInputStream(bis);
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.start();
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
